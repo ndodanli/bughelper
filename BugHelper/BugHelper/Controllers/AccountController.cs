@@ -124,7 +124,7 @@ namespace BugHelper.Controllers
         [Authorize(Roles = "admin")] //sadece "admin" rolüne sahip kullanıcılar kullanabilsin
         public ActionResult KullaniciKontrol() //kullanıcıları silmek, engellemek ve engelini açmak için kullandığımız view'in metodu
         {                                      //kkm, 17.satırda admin'in kullanıcı üzerindeki işlemlerini yönetmek için kullanacağımız model için oluşturduğumuz objenin referansıdır
-            kkm.Kullanicilar = dc.Users.Select(i => i).ToArray(); //veri tabanındaki bütün user'ları seçip, array'e dönüştürerek kkm.Kullanicilar'a attık().Ctrl'e basılı tutarak Kullanicilar basarsanız modeli görebilirsiniz
+            kkm.Kullanicilar = dc.Users.Select(i => i).ToArray(); //veri tabanındaki bütün user'ları seçip, array'e dönüştürerek kkm.Kullanicilar'a attık(Ctrl'e basılı tutarak Kullanicilar basarsanız modeli görebilirsiniz).
             kkm.Engelle = dc.Users.Where(i=>i.LockoutEnabled == false).ToArray(); //engellenmemiş kullanıcıları kkm.Engelle'ye attık
             kkm.EngelKaldir = dc.Users.Where(i => i.LockoutEnabled == true).ToArray(); //engellenmiş kullanıcıları kkm.EngelKaldir'a attık
             return View(kkm);
