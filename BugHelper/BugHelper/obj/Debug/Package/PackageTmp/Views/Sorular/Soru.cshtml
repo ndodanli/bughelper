@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Soru";
+    TempData["soruIdCevap"] = ViewBag.soruId;
+}
+
+<div class="container" style="overflow:visible;">
+    <div class="soru-baslik" >
+        <div>
+            @foreach (var item in ViewBag.sorularVT)
+            {
+                if (item.Id.ToString() == ViewBag.soruId)
+                {
+                    <div class="soru-sahibi">
+                        @item.SoruSahibi
+                    </div>
+                    <div class="baslik">
+                        @item.SoruBaslik
+                    </div>
+                    <div class="soru-icerik">
+                        @item.SoruIcerik
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+
+    @model BugHelper.Models.CevaplarModel
+    <div class="cevapla">
+        @using (Ajax.BeginForm("Cevapla", "Cevaplar", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "msj" }))
+
+        {
+            @Html.HiddenFor(i => i.SorularModelId, new { Value = TempData["soruIdCevap"] })
+            @Html.TextAreaFor(i => i.Cevap)
+            <button type="submit">Gönder</button>
+        }
+    </div>
+
+    <div id="msj">
+        @foreach (var item in ViewBag.CevaplarVT)
+        {
+            if (Convert.ToInt32(TempData["soruIdCevap"]) == item.SorularModelId)
+            {
+                <div class="cevap">
+                    @item.Cevap
+                </div>
+            }
+        }
+    </div>
+</div>
+        
+
+
+
+

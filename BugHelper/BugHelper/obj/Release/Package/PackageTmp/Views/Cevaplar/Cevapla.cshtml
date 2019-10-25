@@ -1,0 +1,10 @@
+﻿@foreach (var item in ViewBag.cevaplarVeriTabani)
+{
+    if (item.SorularModelId.ToString()==(ViewBag.soruid))
+    {
+        <div>
+            @item.Cevap
+        </div>
+    }
+
+}

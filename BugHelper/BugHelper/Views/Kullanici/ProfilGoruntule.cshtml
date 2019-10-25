@@ -1,0 +1,121 @@
+﻿@using BugHelper.Scripts.SoruUrl
+@model BugHelper.Models.ProfilModel
+@{
+    ViewBag.Title = "ProfilGoruntule";
+
+}
+<h2>ProfilGoruntule</h2>
+<div>
+    @if (User.Identity.IsAuthenticated && Model.KullaniciAdi != User.Identity.Name)
+    {
+        if (!Model.TakipteMi)
+        {
+            <div id="takip-et">
+                @using (Ajax.BeginForm("TakipEt", "Kullanici", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "takip-et" }, new { @style = "border: 1px solid red;" }))
+                {
+                    <input type="hidden" value="@Model.KullaniciAdi" name="kullaniciAdi" />
+                    <input type="submit" value="Takip Et" id="TakipEt" />
+                }
+            </div>
+        }
+        else
+        {
+            <div id="takipten-cik">
+                @using (Ajax.BeginForm("TakiptenCik", "Kullanici", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "takipten-cik" }, new { @style = "border: 1px solid red;" }))
+                {
+                    <input type="hidden" value="@Model.KullaniciAdi" name="kullaniciAdi" />
+                    <input type="submit" value="Takipten Çık" id="TakipEt" />
+                }
+            </div>
+        }
+    }
+</div>
+<div>
+    @if (User.Identity.Name == Model.KullaniciAdi)
+    {
+        @Html.ActionLink("Profili Görüntüle", "Profil", "Kullanici")
+    }
+</div>
+
+
+@*Kullanıcının sorduğu son sorular*@
+<div>
+    Kullanıcının sorduğu son sorular
+    @if (Model.KullaniciSorulari.Count != 0)
+    {
+        foreach (var item in Model.KullaniciSorulari)
+        {
+            <div style="display:block;">
+                @item.SoruBaslik
+            </div>
+        }
+    }
+    else
+    {
+        <div>Kullanıcının sorduğu herhangi bir soru bulunmuyor</div>
+    }
+</div>
+@*Kullanıcının sorduğu son sorular*@
+
+@*Kullanıcının cevapladığı son sorular*@
+<div>
+    Kullanıcının cevapladığı son sorular
+    @if (Model.KullaniciCevaplari.Count != 0)
+    {
+        for (int i = 0; i < Model.KullaniciCevaplari.Count; i++)
+        {
+            <div>
+                @Model.KullaniciCevapSorulari[i].SoruBaslik
+                @Model.KullaniciCevaplari[i].Cevap
+            </div>
+        }
+    }
+    else
+    {
+        <div>Kullanıcının cevapladığı herhangi bir soru bulunmuyor</div>
+    }
+</div>
+@*Kullanıcının cevapladığı son sorular*@
+
+@*Kullanıcının Takipçileri*@
+<div>
+    Kullanıcıyı takip edenler
+    @if (Model.Takipciler != null)
+    {
+        foreach (var item in Model.Takipciler)
+        {
+            <div>
+                <a href="@Url.Action("ProfilGoruntule", "Kullanici", new { takmaAd = @FriendlyURL.FriendlyURLTitle(item.Takipci), KullaniciAdi = item.Takipci })">
+                    @item.Takipci
+                </a>
+            </div>
+        }
+    }
+    else
+    {
+        <div>Kullanıcıyı takip eden kimse bulunmuyor</div>
+    }
+</div>
+@*Kullanıcının Takipçileri*@
+
+@*Kullanıcının takip ettikleri*@
+<div>
+    Kullanıcının takip ettikleri
+    @if (Model.TakipEdilenler != null)
+    {
+        foreach (var item in Model.TakipEdilenler)
+        {
+            <div>
+                <a href="@Url.Action("ProfilGoruntule", "Kullanici",new { takmaAd = @FriendlyURL.FriendlyURLTitle(item.TakipEttikleri), KullaniciAdi = item.TakipEttikleri })">
+                    @item.TakipEttikleri
+                </a>
+            </div>
+        }
+    }
+    else
+    {
+        <div>Kullanıcının takip ettiği kimse bulunmuyor</div>
+    }
+</div>
+@*Kullanıcının takip ettikleri*@
+

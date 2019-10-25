@@ -1,0 +1,43 @@
+﻿@model BugHelper.Models.Register
+@{
+    ViewBag.Title = "Register";
+}
+<style>
+    #container {
+        background: #fff;
+        border-radius: 5px;
+        margin-top: 80px;
+        margin-left: 320px;
+        width: 400px;
+        max-width: 100%;
+        border: 1px solid #edeae3;
+        min-height: 270px;
+    }
+
+    #login-form {
+        margin-left: 50px;
+        width: 500px;
+        max-width: 70%;
+    }
+</style>
+<div id="container">
+    @Html.ValidationSummary()
+    @using (Html.BeginForm())
+    {<div id="login-form">
+            @Html.AntiForgeryToken()
+            <div class="form-group ">
+                <label>Username</label>
+                @Html.TextBoxFor(i => i.UserName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                @Html.TextBoxFor(i => i.Email, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                @Html.TextBoxFor(i => i.Password, new { @class = "form-control",@type ="password" })
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </div>
+    }
+</div>

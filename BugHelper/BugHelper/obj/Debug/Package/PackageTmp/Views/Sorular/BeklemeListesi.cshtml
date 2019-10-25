@@ -1,0 +1,26 @@
+﻿@model  List<BugHelper.Models.SorularModel>
+@{
+    ViewBag.Title = "beklemeListesi";
+}
+<h2>Askıda Bekletilen Sorular</h2>
+<div id="onaylandi" style="border:1px solid green;">
+    @using (Ajax.BeginForm("BeklemeListesi", "Sorular", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "onaylandi" }, new { @style = "border: 1px solid red;" }))
+    {
+        for (int i = 0; i < Model.Count(); i++)
+        {
+    <div>
+        @Html.CheckBoxFor(m => m[i].Onay)
+        @Html.DisplayFor(m => m[i].Id)
+        @Html.DisplayFor(m => m[i].SoruBaslik)
+        @Html.DisplayFor(m => m[i].SoruIcerik)
+        @Html.DisplayFor(m => m[i].KodlamaDili)
+        @Html.DisplayFor(m => m[i].SorulmaTarihi)
+        @Html.HiddenFor(m => m[i].Id)
+    </div>
+        }
+        <input type="submit" value="Seçilen Soruları Onayla" />
+    }
+    <div id="onaylandi"></div>
+</div>
+
+

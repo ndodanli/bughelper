@@ -1,0 +1,38 @@
+﻿@model BugHelper.Models.ParolaDegistir
+@{
+    ViewBag.Title = "ParolaDegistir";
+}
+
+<div id="parola-degistir">
+    <div id="msj">
+        <h2>Parola Değiştir</h2>
+        @Html.ValidationSummary()
+
+        @using (Ajax.BeginForm("ParolaDegistirAction", "Kullanici", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "msj" }))
+        {
+            @Html.AntiForgeryToken()
+            <div id="parola-degistir">
+                <div class="ad">
+                    Eski Parola
+                    @Html.TextBoxFor(i => i.OldPassword, new { @class = "form-control", @type = "password" })
+                </div>
+                <div class="form-group">
+                    <label>Parola</label>
+                    @Html.TextBoxFor(i => i.Password, new { @class = "form-control", @type = "password" })
+                </div>
+                <div class="form-group">
+                    <label>Parola Tekrar</label>
+                    @Html.TextBoxFor(i => i.ConfirmPassword, new { @class = "form-control", @type = "password" })
+                </div>
+                <input type="submit" value="Güncelle" id="guncelle" />
+            </div>
+        }
+    </div>
+</div>
+<script>
+    function yonlendirSuccess() {
+        setTimeout(function () { location.href = '/Profil'; }, 700);
+    }
+
+</script>
+

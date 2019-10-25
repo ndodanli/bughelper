@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Profil";
+}
+
+<h2>Profil</h2>
+
+<a href="@Url.Action("ProfiliGuncelle", "Kullanici", new { kullaniciAdi = User.Identity.Name})" style="border:3px solid #000000">
+    Profil Bilgilerini Güncelle
+</a>
+<a href="@Url.Action("ParolaDegistir", "Kullanici", new { kullaniciAdi = User.Identity.Name})" style="border:3px solid #000000">
+    Parola Değiştir
+</a>

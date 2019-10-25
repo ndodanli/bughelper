@@ -1,0 +1,25 @@
+﻿
+@using BugHelper.Scripts.SoruUrl
+
+@foreach (var item in Model)
+{
+    <div class="soru-kutu" style="border: 1px solid red;">
+        <div class="kullanici" style="float:left;">
+            <a href="">
+                <img src="" alt="" style="float:left" />
+                @item.SoruSahibi
+            </a>
+        </div>
+        <div class="etiketler">
+            @item.KodlamaDili
+        </div>
+        <a href="@Url.Action("Soru", "Sorular", new { baslik = @FriendlyURL.FriendlyURLTitle(item.SoruBaslik), SoruId = item.Id })">
+            <div class="baslik">
+                @item.SoruBaslik
+            </div>
+        </a>
+        <div class="soru-icerik" style="border:1px solid yellow;">
+            @item.SoruIcerik
+        </div>
+    </div>
+}
