@@ -99,7 +99,7 @@ namespace BugHelper.Controllers
                         var identity = userManager.CreateIdentity(user, "ApplicationCookie"); //giriş yapan kullanıcınıya bir kimlik oluşturup tarayıcısına bir Cookie(çerez) bırakıyoruz
                         var authProperties = new AuthenticationProperties()
                         {
-                            IsPersistent = true //kullanıcının tarayıcısına bıraktığımız Cooki'nin süresi bitene ya da kullanıcı tarafından silinene kadar kalıcı olmasını sağladık
+                            IsPersistent = true //kullanıcının tarayıcısına bıraktığımız Cookie'nin süresi bitene ya da kullanıcı tarafından silinene kadar kalıcı olmasını sağladık
                         };
 
                         authManager.SignOut();
