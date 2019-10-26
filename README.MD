@@ -1,0 +1,1 @@
+Client istemlerinin çoğunu controllerlar içinde halettiğimiz için açıklamalarda daha çok controllerlar üzerinde duruldu.
