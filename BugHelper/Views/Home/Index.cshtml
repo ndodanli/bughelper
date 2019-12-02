@@ -108,7 +108,7 @@
                         <div class="row">
                             <div class="panel-body">
                                 <div class="col-sm-3 text-left">
-                                    <p>@Model.Sorular.Count Soru</p>
+                                    <p>@Model.SoruSayisi Soru</p>
                                 </div>
                                 @using (Ajax.BeginForm("SorularFiltre", "Home", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "sorular" }))
                                 {

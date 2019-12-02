@@ -23,6 +23,7 @@ namespace BugHelper.Controllers
             }
             model.PagedList = sc.Sorular.Where(i => i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
             model.Sorular = sc.Sorular.Where(i => i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+            model.SoruSayisi = sc.Sorular.Count();
             foreach (var item in model.Sorular)
             {
                 if(item.SoruSahibi == "Misafir") { continue; }
@@ -38,6 +39,7 @@ namespace BugHelper.Controllers
             }
             model.PagedList = sc.Sorular.Where(i => i.SoruBaslik.Contains(arananString) || i.SoruIcerik.Contains(arananString) && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
             model.Sorular = sc.Sorular.Where(i => i.SoruBaslik.Contains(arananString) || i.SoruIcerik.Contains(arananString) && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+            model.SoruSayisi = sc.Sorular.Count();
             foreach (var item in model.Sorular)
             {
                 if (item.SoruSahibi == "Misafir") { continue; }

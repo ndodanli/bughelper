@@ -86,6 +86,7 @@ namespace BugHelper.Controllers
             model.SoruIzleyıcı = dc.Users.Where(i => i.UserName == User.Identity.Name).FirstOrDefault();
             model.PagedList = sc.Cevaplar.Where(i => i.Soru.Id == id && i.Onay == true && i.Soru.Onay == true).OrderBy(i => i.CevapTarihi).ToPagedList(page ?? 1, 10);
             model.CevaplarModelForSoru = sc.Cevaplar.Where(i => i.Soru.Id == id && i.Onay == true && i.Soru.Onay == true).OrderBy(i => i.CevapTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+            model.CevapSayisi = sc.Cevaplar.Where(i => i.Soru.Id == id && i.Onay == true && i.Soru.Onay == true).Count();
             foreach (var item in model.CevaplarModelForSoru)
             {
                 if (item.CevapSahibi == "Misafir") { continue; }
