@@ -47,11 +47,10 @@
                                 <!-- Button -->
                                 <div class="form-group text-center">
                                     <label class="col-md-4 control-label" for="singlebutton"></label>
-                                    <div class="col-sm-3">
-                                        <button type="submit" class="btn btn-success btn-block signup-btn">Onayla</button>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <a href="@Url.Action("ProfilGoruntule", "Kullanici", new { takmaAd = @FriendlyURL.FriendlyURLTitle(User.Identity.Name), KullaniciAdi = User.Identity.Name })" class="btn btn-danger">Vazgeç</a>
+                                    <div class="col-md-5">
+                                        <button type="submit" class="btn btn-success btn-block">Onayla</button>
+                                        <a href="@Url.Action("ProfilGoruntule", "Kullanici", new { takmaAd = @FriendlyURL.FriendlyURLTitle(User.Identity.Name), KullaniciAdi = User.Identity.Name })" class="btn btn-danger btn-block">Vazgeç</a>
+
                                     </div>
                                 </div>
                             </fieldset>

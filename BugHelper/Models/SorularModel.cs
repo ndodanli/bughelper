@@ -79,6 +79,7 @@ namespace BugHelper.Models
     {
         public List<SorularModel> Sorular { get; set; }
         public ApplicationUser SoruIzleyici { get; set; }
+        public int SoruSayisi { get; set; }
         public IPagedList PagedList { get; set; }
     }
 }

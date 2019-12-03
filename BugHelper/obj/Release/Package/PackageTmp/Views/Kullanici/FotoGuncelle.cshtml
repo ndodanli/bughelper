@@ -1,4 +1,5 @@
-﻿@model BugHelper.Models.FotoModel
+﻿@using BugHelper.Scripts.SoruUrl
+@model BugHelper.Models.FotoModel
 @{
     ViewBag.Title = "Fotoğraf Güncelle";
 }
@@ -37,7 +38,7 @@
                                 <label class="col-md-4 control-label" for="singlebutton"></label>
                                 <div class="col-md-4">
                                     <input type="submit" class="btn btn-success btn-block" value="Yükle" /><br />
-                                    <a href="/Profil/Index" class="btn btn-danger btn-block">Vazgeç</a>
+                                    <a href="@Url.Action("ProfilGoruntule", "Kullanici", new { takmaAd = @FriendlyURL.FriendlyURLTitle(User.Identity.Name), KullaniciAdi = User.Identity.Name })" class="btn btn-danger btn-block">Vazgeç</a>
                                 </div>
                             </div>
                             <div>

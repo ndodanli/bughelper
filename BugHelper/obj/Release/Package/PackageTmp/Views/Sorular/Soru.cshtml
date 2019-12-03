@@ -53,10 +53,18 @@
                         </ul>
                         <br />
                         <div class="text-center">
-                            <a class="btn btn-social-icon btn-facebook"><span class="fa fa-facebook"></span></a>
-                            <a class="btn btn-social-icon btn-twitter"><span class="fa fa-twitter"></span></a>
-                            <a class="btn btn-social-icon btn-github"><span class="fa fa-github"></span></a>
-                            <a class="btn btn-social-icon btn-bitbucket"><span class="fa fa-bitbucket"></span></a>
+                            <a href="https://www.facebook.com/bug.helper.98" class="btn btn-social-icon btn-facebook" target="_blank">
+                                <span class="fa fa-facebook"></span>
+                            </a>
+                            <a href="https://twitter.com/bug_helper" class="btn btn-social-icon btn-twitter" target="_blank">
+                                <span class="fa fa-twitter"></span>
+                            </a>
+                            <a href="https://github.com/bughelperteam" class="btn btn-social-icon btn-github" target="_blank">
+                                <span class="fa fa-github"></span>
+                            </a>
+                            <a href="https://bitbucket.org/asimsinanyuksel/bughelper/src/master/" class="btn btn-social-icon btn-bitbucket" target="_blank">
+                                <span class="fa fa-bitbucket"></span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -153,7 +161,7 @@
         <div class="row">
             <div class="panel-body">
                 <div class="col-sm-3 text-left">
-                    <p><b>@Model.CevaplarModelForSoru.Count Cevap</b></p>
+                    <p><b>@Model.CevapSayisi Cevap</b></p>
                 </div>
                 @using (Ajax.BeginForm("CevaplarFiltre", "Cevaplar", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "cevaplarfiltreid" }))
                 {
@@ -252,8 +260,16 @@
             </div>
             <div id="msj"></div>
             <div class="col-md-12 text-right">
-                <button id="cevapGonder" type="submit" class="btn btn-success" onclick="yonlendirCevap()"> Cevap Gönder</button>
-                <button type="submit" class="btn btn-primary" name="misafir" onclick="yonlendirCevap()" value="1"> Misafir Cevap Gönder</button>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <button id="cevapGonder" type="submit" class="btn btn-success" onclick="yonlendirCevap()"> Cevap Gönder</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary" name="misafir" onclick="yonlendirCevap()" value="1"> Misafir Cevap Gönder</button>
+
+                }
+
                 <a href="/Home/Index" class="btn btn-danger"> Vazgeç</a>
                 <br /><br /><br />
             </div>

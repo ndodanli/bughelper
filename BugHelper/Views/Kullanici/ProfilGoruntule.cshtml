@@ -4,6 +4,53 @@
     ViewBag.Title = "Profil Görüntüle";
 
 }
+<style>
+    .third, .third:visited, .third:hover, .third:active {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        position: relative;
+        transition: 0.5s color ease;
+        text-decoration: none;
+        color: #81b3d2;
+    }
+
+        .third:hover {
+            color: #d73444;
+        }
+
+        .third.before:before, .third.after:after {
+            content: "";
+            transition: 0.5s all ease;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            position: absolute;
+        }
+
+        .third.before:before {
+            top: -0.25em;
+        }
+
+        .third.after:after {
+            bottom: -0.25em;
+        }
+
+        .third.before:before, .third.after:after {
+            height: 5px;
+            height: 0.35rem;
+            width: 0;
+            background: #d73444;
+        }
+
+        .third.third:after {
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+
+        .third.before:hover:before, .third.after:hover:after {
+            width: 100%;
+        }
+</style>
 @if (Model != null)
 {
 
@@ -187,12 +234,14 @@
                                             </span>
                                         </h4>
                                         <div class="media-body">
-                                            <a href="@Url.Action("Soru", "Sorular", new { baslik = @FriendlyURL.FriendlyURLTitle(item.SoruBaslik), SoruId = item.Id })">
+                                            <a class="third after" href="@Url.Action("Soru", "Sorular", new { baslik = @FriendlyURL.FriendlyURLTitle(item.SoruBaslik), SoruId = item.Id })">
                                                 @item.SoruBaslik
                                             </a>
-                                            <div class="media-body" style="display:inline-block;max-width:430px; max-height:130px;overflow:auto">
-                                                <p>@Html.Raw(@item.SoruIcerik)</p>
-                                            </div>
+                                            @*
+                                                <div class="media-body" style="display:inline-block;max-width:430px; max-height:130px;overflow:auto">
+                                                    <p>@Html.Raw(@item.SoruIcerik)</p>
+                                                </div>
+                                            *@
                                         </div>
                                     </div>
                                     <hr />
@@ -233,16 +282,28 @@
                                                 }
                                             </span>
                                         </h4>
-                                        <a href="@Url.Action("Soru", "Sorular", new { baslik = @FriendlyURL.FriendlyURLTitle(Model.KullaniciCevapSorulari[i].SoruBaslik), SoruId = @Model.KullaniciCevapSorulari[i].Id })">
-                                            @Model.KullaniciCevapSorulari.ElementAt(i).SoruBaslik
+                                        <a class="third after" href="@Url.Action("Soru", "Sorular", new { baslik = @FriendlyURL.FriendlyURLTitle(Model.KullaniciCevapSorulari[i].SoruBaslik), SoruId = @Model.KullaniciCevapSorulari[i].Id })">
+                                            @Model.KullaniciCevapSorulari[i].SoruBaslik
                                         </a>
                                     </div>
                                     <div class="media-body" style="display:inline-block;max-width:430px; max-height:130px;overflow:auto">
-                                        <div class="media-body">
-                                            <p>
-                                                @Html.Raw(@Model.KullaniciCevaplari.ElementAt(i).Cevap)
-                                            </p>
-                                        </div>
+                                            <a href="#" style="color:black;" data-toggle="modal" data-target="#@Model.KullaniciCevapSorulari[i].Id">Cevabı Göster</a>
+                                                <div class="modal fade" id="@Model.KullaniciCevapSorulari[i].Id" role="dialog">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Cevap</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>@Html.Raw(@Model.KullaniciCevaplari.ElementAt(i).Cevap)</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                     </div>
                                     <hr />
 

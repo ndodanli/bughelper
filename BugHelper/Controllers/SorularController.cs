@@ -22,8 +22,24 @@ namespace BugHelper.Controllers
                 "C#",
                 "Java",
                 "Asp.net",
+                "C",
                 "Javascript",
-                "Html"
+                "Html",
+                "Python",
+                "Php",
+                "R",
+                "Go",
+                "Ruby",
+                "Groovy",
+                "Perl",
+                "Pascal",
+                "Delphi",
+                "Swift",
+                "Matlab",
+                "Assembly",
+                "Linux",
+                "Windows",
+                "Shell"
             };
             ViewBag.Diller = diller;
             return View();
@@ -75,6 +91,7 @@ namespace BugHelper.Controllers
         {
             int id = Convert.ToInt32(RouteData.Values["SoruId"]);
 
+            if (sc.Sorular.Where(i => i.Id == id).FirstOrDefault() == null) return View("Hata","_Layout", "<div class=\"alert alert-warning\" role=\"alert\">Soru bulunamadı</div>");
             sc.Sorular.Where(i => i.Id == id).FirstOrDefault().TiklanmaSayisi++;
             sc.SaveChanges();
             SoruCevapModel model = new SoruCevapModel(); //Bu metod için kullandığımız modelimiz(Ctrl'e basılı tutaral SoruCevapModel'e tıklarsanız içeriğini görebilirsiniz)

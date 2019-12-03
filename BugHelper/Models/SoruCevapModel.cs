@@ -14,6 +14,7 @@ namespace BugHelper.Models
         public string SoruSahibi { get; set; }
         public bool FavorideMi = false;
         public int SoruId { get; set; }
+        public int CevapSayisi { get; set; }
         public ApplicationUser SoruIzleyıcı { get; set; }
         public int CevapId { get; set; }
         public IPagedList PagedList { get; set; }

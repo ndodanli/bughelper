@@ -710,9 +710,16 @@
     <Content Include="css\main.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="img\aca.jfif" />
+    <Content Include="img\ais.jfif" />
     <Content Include="img\bug-logo.png" />
     <Content Include="img\bughelper-dark.png" />
     <Content Include="img\bughelper.png" />
+    <Content Include="img\favicon.ico" />
+    <Content Include="img\ib.jfif" />
+    <Content Include="img\mo.jfif" />
+    <Content Include="img\nd.jfif" />
+    <Content Include="img\vk.jfif" />
     <Content Include="js\bootstrap.bundle.js" />
     <Content Include="js\bootstrap.bundle.min.js" />
     <Content Include="js\bootstrap.js" />

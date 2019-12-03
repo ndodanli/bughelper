@@ -77,11 +77,9 @@
                                 <label class="col-md-4 control-label" for="guncellebuton"></label>
                                 <div class="col-md-5">
                                     <button type="submit" class="btn btn-success btn-block" onclick="yonlendir()">Güncelle</button>
-                                    <a href="" class="btn btn-danger btn-block">Vazgeç</a>
+                                    <a href="@Url.Action("ProfilGoruntule","Kullanici",new { takmaAd = FriendlyURL.FriendlyURLTitle(User.Identity.Name), KullaniciAdi = FriendlyURL.FriendlyURLTitle(User.Identity.Name) })" class="btn btn-danger btn-block">Vazgeç</a>
                                 </div>
                             </div>
-
-
                         </fieldset>
                     }
                     <div class="col-sm-2"></div>

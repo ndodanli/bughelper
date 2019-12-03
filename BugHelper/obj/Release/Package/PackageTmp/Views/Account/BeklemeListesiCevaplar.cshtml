@@ -32,6 +32,54 @@
     tr:hover {
         background-color: #f5f5f5;
     }
+    .content {
+        position: relative;
+        z-index: 1;
+        border: 1px solid white;
+        background-color: grey;
+        width: 300px;
+        height: 300px;
+        margin: auto;
+        overflow: hidden;
+    }
+
+    .carte_button {
+        right: 0px;
+        position: absolute;
+        z-index: 3;
+        border: 1px solid white;
+        background-color: yellow;
+        width: 50px;
+        height: 50px;
+    }
+
+    .carte {
+        position: relative;
+        top: -3px;
+        z-index: 2;
+        border-bottom: 2px solid white;
+        border-top: 2px solid white;
+        background-color: green;
+        width: auto;
+        height: 0%;
+        margin: auto;
+        transition: height 500ms;
+    }
+
+    .carte_button:hover + .carte {
+        border-top: none;
+        top: 50px;
+        height: 300px;
+    }
+
+    .carte:hover {
+        top: 50px;
+        height: 250px;
+    }
+    #cevapmodal{
+        background-color:black;
+    }
+
 </style>
 
 <div class="row" id="cevaplari-onayla" style="height:500px;">
@@ -75,26 +123,39 @@
                                         <tr>
                                             <td>@Html.DisplayFor(m => m.CevaplarModelListe[i].Id)</td>
                                             <td>@Html.DisplayFor(m => m.CevaplarModelListe[i].CevapSahibi)</td>
-                                            <td><a href="#" data-toggle="modal" data-target="#myModalCevap"><span class="badge-dark"></span>Cevabı gör</a></td>
-                                            <td>@Html.DisplayFor(m => m.CevaplarModelListe[i].CevapTarihi)</td>
-                                            <td>@Html.CheckBoxFor(m => m.CevaplarModelListe[i].Onay)</td>
-                                        </tr>
-                                    </tbody>
-                                    @Html.HiddenFor(m => m.CevaplarModelListe[i].Id)
-                                    <item class="modal fade" style="color:whitesmoke;" tabindex="-1" id="myModalCevap">
-                                        @Html.Raw(Model.CevaplarModelListe[i].Cevap)
+                                            <td>
+                                                <a href="#" style="color:black;" data-toggle="modal" data-target="#@Model.CevaplarModelListe[i].Id">Cevabı Göster</a>
+                                                <div class="modal fade" id="@Model.CevaplarModelListe[i].Id" role="dialog">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                <h4 class="modal-title">Cevap</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>@Html.Raw(Model.CevaplarModelListe[i].Cevap)</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                        <td>@Html.DisplayFor(m => m.CevaplarModelListe[i].CevapTarihi)</td>
+                        <td>@Html.CheckBoxFor(m => m.CevaplarModelListe[i].Onay)</td>
+                        </tr>
+                        </tbody>
+                        @Html.HiddenFor(m => m.CevaplarModelListe[i].Id)
+                    }
+                                </table>
+                                <input type="hidden" value="sil" name="durum" />
+                                <button type="submit" class="btn btn-outline-dark" style="margin-top:10px;" onclick="tikla()">Seçilen cevapları onayla</button>
 
-                                    </item>
-                                }
-                            </table>
-                            <input type="hidden" value="sil" name="durum" />
-                            <button type="submit" class="btn btn-outline-dark" style="margin-top:10px;" onclick="tikla()">Seçilen cevapları onayla</button>
-
-                        }
-                    </fieldset>
-                    Sayfa @(Model.PagedList.PageCount < Model.PagedList.PageNumber ? 0 : Model.PagedList.PageNumber)/@Model.PagedList.PageCount
-                    @Html.PagedListPager(Model.PagedList, page => Url.Action("BeklemeListesiCevaplar", new { page }))
-                </div>
+                            }
+                        </fieldset>
+                        Sayfa @(Model.PagedList.PageCount < Model.PagedList.PageNumber ? 0 : Model.PagedList.PageNumber)/@Model.PagedList.PageCount
+                        @Html.PagedListPager(Model.PagedList, page => Url.Action("BeklemeListesiCevaplar", new { page }))
+                    </div>
                 <div class="col-sm-3"></div>
             </div>
         </div>

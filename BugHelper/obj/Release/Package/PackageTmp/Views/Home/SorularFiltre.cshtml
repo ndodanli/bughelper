@@ -22,14 +22,16 @@
                                     @item.SoruBaslik
                                 </a>
                             </h4>
-                            <p class="text-justify">
-                                @Html.Raw(@item.SoruIcerik)
-                                <small class="text-muted">
-                                    <a href="@Url.Action("Soru", "Sorular", new { baslik = @FriendlyURL.FriendlyURLTitle(item.SoruBaslik), SoruId = item.Id })">
-                                        <text>Soruya git</text>
-                                    </a>
-                                </small>
-                            </p>
+                            @*
+                                <p class="text-justify">
+                                    @Html.Raw(@item.SoruIcerik)
+                                    <small class="text-muted">
+                                        <a href="@Url.Action("Soru", "Sorular", new { baslik = @FriendlyURL.FriendlyURLTitle(item.SoruBaslik), SoruId = item.Id })">
+                                            <text>Soruya git</text>
+                                        </a>
+                                    </small>
+                                </p>
+                            *@
                             <h5><span class="label label-primary">@item.KodlamaDili</span></h5>
                             <div class="pull-right">
                                 <a href="@Url.Action("ProfilGoruntule", "Kullanici", new { takmaAd = @FriendlyURL.FriendlyURLTitle(item.SoruSahibi), KullaniciAdi = item.SoruSahibi })" class="pull-right">
@@ -77,19 +79,19 @@
                             <span class="warning pull-right alert alert-danger" style="color:red;padding-top:1px;padding-bottom:1px;">Onaylanmadı</span>
                             @if (!@item.SoruSahibi.Contains("Misafir"))
                             {
-                            <a href="@Url.Action("ProfilGoruntule", "Kullanici", new { takmaAd = @FriendlyURL.FriendlyURLTitle(item.SoruSahibi), KullaniciAdi = item.SoruSahibi })" class="pull-right">
-                                @if (item.SoruSahibiPath == null)
-                                {
-                                <img src="https://www.w3schools.com/bootstrap/img_avatar3.png" class="img-circle" height="65" width="65" alt="Avatar">
-                                }
-                                else
-                                {
-                                <img src="@item.SoruSahibiPath.Substring(20)" class="img-circle" height="65" width="65" alt="Avatar">
-                                }
-                                <small class="text-muted">
-                                    @item.SoruSahibi
-                                </small>
-                            </a>
+                                <a href="@Url.Action("ProfilGoruntule", "Kullanici", new { takmaAd = @FriendlyURL.FriendlyURLTitle(item.SoruSahibi), KullaniciAdi = item.SoruSahibi })" class="pull-right">
+                                    @if (item.SoruSahibiPath == null)
+                                    {
+                                        <img src="https://www.w3schools.com/bootstrap/img_avatar3.png" class="img-circle" height="65" width="65" alt="Avatar">
+                                    }
+                                    else
+                                    {
+                                        <img src="@item.SoruSahibiPath.Substring(20)" class="img-circle" height="65" width="65" alt="Avatar">
+                                    }
+                                    <small class="text-muted">
+                                        @item.SoruSahibi
+                                    </small>
+                                </a>
                             }
                             else
                             {

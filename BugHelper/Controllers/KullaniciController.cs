@@ -74,7 +74,7 @@ namespace BugHelper.Controllers
             for (int x = 0; x < model.KullaniciCevaplari.Count; x++)
             {
                 var temp = model.KullaniciCevaplari.ElementAt(x).Id;
-                model.KullaniciCevapSorulari.Add(sc.Cevaplar.Where(i => i.Id == temp).Select(a => a.Soru).FirstOrDefault());
+                model.KullaniciCevapSorulari.Add(sc.Cevaplar.Where(i => i.Id == temp).Select(a => a.Soru).FirstOrDefault() ?? new SorularModel { SoruBaslik = "Cevap bulunamadı" });
             }
             if (User.Identity.IsAuthenticated && dc.TakipEttikleri.Any(i => i.ApplicationUser.UserName == User.Identity.Name && i.TakipEttikleri == kullaniciAdi))//(NullReferenceException) için farklı bir kullanım.Sorgu yaparken Any kullanırsak sorgu yaptığımız yerde parantez içine aldığımız nesneden olup olmadığını boolean değer olarak söyler, bu şekilde de NullReferenceException handling yapabiliriz
             {                                   //bu kontroldeki amaç giriş yapan kullanıcının profiline girdiği kullanıcıyı takıp edip etmediğine dair bir boolean değer kullanmak ve bu değer ile view'de takip butonunu gerektiği şekilde göstermek(takip et ya da takipten çık)
@@ -98,10 +98,11 @@ namespace BugHelper.Controllers
             profil.BitBucket = user.BitBucket;
             IEnumerable<String> ulkeler = new List<String>
             {
-                "Türkiye",
-                "Almanya",
-                "İngiltere",
-                "ABD",
+                "Türkiye", "Almanya", "Avusturya", "Amerika","İngiltere",
+                "Macaristan", "Yunanistan", "Rusya", "Suriye", "İran", "Irak",
+                "Şili", "Brezilya", "Japonya", "Portekiz", "İspanya",
+                "Makedonya", "Ukrayna", "İsviçre", "İngiltere", "ABD",
+
             };
             ViewBag.Ulkeler = ulkeler;
             return View(profil);
@@ -120,6 +121,7 @@ namespace BugHelper.Controllers
             user.Facebook = gelenProfil.Facebook;
             user.Twitter = gelenProfil.Twitter;
             user.GitHub = gelenProfil.GitHub;
+            user.BitBucket = gelenProfil.BitBucket;
             dc.SaveChanges();
             return PartialView("_Mesaj", mesaj);
         }
@@ -233,7 +235,7 @@ namespace BugHelper.Controllers
             decimal DosyaBoyutu = 500;
             try
             {
-                
+
                 var desteklenenTip = new[] { "jpg", "jpeg", "png" };
                 var fileExt = System.IO.Path.GetExtension(file.FotoFile.FileName).Substring(1);
                 if (!desteklenenTip.Contains(fileExt))
@@ -313,11 +315,12 @@ namespace BugHelper.Controllers
             {
                 if (model.NewEmail == model.ConfirmEmail)
                 {
-                    if(dc.Users.All(i => i.Email != model.NewEmail)) { 
-                    user.Email = model.NewEmail;
-                    dc.SaveChanges();
-                    ViewBag.Message = "<div class=\"alert alert-success\" role=\"alert\">E-Posta güncelleme başarılı...</div>";
-                    return View("EpostaDegistir");
+                    if (dc.Users.All(i => i.Email != model.NewEmail))
+                    {
+                        user.Email = model.NewEmail;
+                        dc.SaveChanges();
+                        ViewBag.Message = "<div class=\"alert alert-success\" role=\"alert\">E-Posta güncelleme başarılı...</div>";
+                        return View("EpostaDegistir");
                     }
                     else
                     {

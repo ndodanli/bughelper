@@ -1,1 +1,1 @@
-Sadece front end kısmını sunacağımız için şuanki aşamada https://bughelper-full.azurewebsites.net/ sitesine girip sağ tıklayıp incele derseniz daha rahat çalışabilirsiniz. Daha detaylı görmek isterseniz, projeyi visual studioda açıp back-end ile ilgili kodları kod satırlarının başındaki eksiye tıklayarak kapatıp sadece front-end kısmına odaklanabilirsiniz.
+Client istemlerinin çoğunu controllerlar içinde halettiğimiz için açıklamalarda daha çok controllerlar üzerinde duruldu.

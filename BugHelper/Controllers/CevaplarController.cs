@@ -98,6 +98,7 @@ namespace BugHelper.Controllers
             sc.ArtiOyCevaplar.RemoveRange(sc.ArtiOyCevaplar.Where(i => i.Cevap.Id == silinecekCevap.Id));
             sc.EksiOyCevaplar.RemoveRange(sc.EksiOyCevaplar.Where(i => i.Cevap.Id == silinecekCevap.Id));
             sc.Sorular.Where(i => i.Cevaplar.Where(a => a.Id == silinecekCevap.Id).FirstOrDefault() != null).FirstOrDefault().Cevaplar.Remove(sc.Cevaplar.Where(b => b.Id == silinecekCevap.Id).FirstOrDefault());
+            sc.Cevaplar.Remove(sc.Cevaplar.Where(i => i.Id == silinecekCevap.Id).FirstOrDefault());
             sc.SaveChanges();
             TempData["Duzenlendi"] = "<div class=\"alert alert-success\" role=\"alert\">Cevabınız başarı ile silindi</div>";
             return Redirect(Url.Action("Soru", "Sorular", new { baslik = FriendlyURL.FriendlyURLTitle(silinecekCevap.Soru.SoruBaslik), SoruId = silinecekCevap.Soru.Id }));

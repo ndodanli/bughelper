@@ -6,14 +6,45 @@
     ViewBag.Title = "Ana Sayfa";
 }
 <style>
-    .tag {
-        width: 54px;
-        height: 25px;
-        font-size: 9px;
+    .third, .third:visited, .third:hover, .third:active {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        position: relative;
+        transition: 0.5s color ease;
+        text-decoration: none;
+        color: #81b3d2;
     }
+        .third:hover {
+            color: #d73444;
+        }
+        .third.before:before, .third.after:after {
+            content: "";
+            transition: 0.5s all ease;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            position: absolute;
+        }
+        .third.before:before {
+            top: -0.25em;
+        }
+        .third.after:after {
+            bottom: -0.25em;
+        }
+        .third.before:before, .third.after:after {
+            height: 5px;
+            height: 0.35rem;
+            width: 0;
+            background: #d73444;
+        }
+        .third.third:after {
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+        .third.before:hover:before, .third.after:hover:after {
+            width: 100%;
+        }
 </style>
-<hr />
-
 <div class="row">
     @Html.Raw(@TempData["Message"])
     <div class="col-lg-3">
@@ -49,12 +80,27 @@
                         <p>
                             @using (Ajax.BeginForm("SorularFiltre", "Home", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "sorular" }))
                             {
-                                <button type="submit" class="label label-default tag" value="C#" name="etiketFiltre">csharp</button>
-                                <button type="submit" class="label label-primary tag" value="Java" name="etiketFiltre">java</button>
-                                <button type="submit" class="label label-success tag" value="AspNet" name="etiketFiltre">aspnet</button>
-                                <button type="submit" class="label label-info tag" value="C" name="etiketFiltre">c</button>
-                                <button type="submit" class="label label-warning tag" value="JavaScript" name="etiketFiltre">javascript</button>
-                                <button type="submit" class="label label-danger tag" value="Html" name="etiketFiltre">html</button>
+                                <button type="submit" class="btn btn-primary btn-xs" value="C#" name="etiketFiltre">csharp</button>
+                                <button type="submit" class="btn btn-secondary btn-xs" value="Java" name="etiketFiltre">java</button>
+                                <button type="submit" class="btn btn-success btn-xs" value="AspNet" name="etiketFiltre">aspnet</button>
+                                <button type="submit" class="btn btn-info btn-xs" value="C" name="etiketFiltre">c</button>
+                                <button type="submit" class="btn btn-danger btn-xs" value="JavaScript" name="etiketFiltre">javascript</button>
+                                <button type="submit" class="btn btn-default btn-xs" value="Html" name="etiketFiltre">html</button>
+                                <button type="submit" class="btn btn-success btn-xs" value="Python" name="etiketFiltre">python</button>
+                                <button type="submit" class="btn btn-info btn-xs" value="Php" name="etiketFiltre">php</button>
+                                <button type="submit" class="btn btn-success btn-xs" value="R" name="etiketFiltre">r</button>
+                                <button type="submit" class="btn btn-secondary btn-xs" value="Go" name="etiketFiltre">go</button>
+                                <button type="submit" class="btn btn-default btn-xs" value="Ruby" name="etiketFiltre">ruby</button>
+                                <button type="submit" class="btn btn-primary btn-xs" value="Groovy" name="etiketFiltre">groovy</button>
+                                <button type="submit" class="btn btn-secondary btn-xs" value="Perl" name="etiketFiltre">perl</button>
+                                <button type="submit" class="btn btn-danger btn-xs" value="Pascal" name="etiketFiltre">pascal</button>
+                                <button type="submit" class="btn btn-info btn-xs" value="Delphi" name="etiketFiltre">delphi</button>
+                                <button type="submit" class="btn btn-danger btn-xs" value="Swift" name="etiketFiltre">swift</button>
+                                <button type="submit" class="btn btn-info btn-xs" value="Matlab" name="etiketFiltre">matlab</button>
+                                <button type="submit" class="btn btn-primary btn-xs" value="Assembly" name="etiketFiltre">assembly</button>
+                                <button type="submit" class="btn btn-danger btn-xs" value="Linux" name="etiketFiltre">linux</button>
+                                <button type="submit" class="btn btn-default btn-xs" value="Windows" name="etiketFiltre">windows</button>
+                                <button type="submit" class="btn btn-success btn-xs" value="Shell" name="etiketFiltre">shell</button>
                             }
                         </p>
                     </div>
@@ -71,16 +117,16 @@
                             <li><a href="/Kullanici/Iletisim">İletişim</a></li>
                         </ul>
                         <div class="text-center">
-                            <a class="btn btn-social-icon btn-facebook">
+                            <a href="https://www.facebook.com/bug.helper.98" class="btn btn-social-icon btn-facebook" target="_blank">
                                 <span class="fa fa-facebook"></span>
                             </a>
-                            <a class="btn btn-social-icon btn-twitter">
+                            <a href="https://twitter.com/bug_helper" class="btn btn-social-icon btn-twitter" target="_blank">
                                 <span class="fa fa-twitter"></span>
                             </a>
-                            <a class="btn btn-social-icon btn-github">
+                            <a href="https://github.com/bughelperteam" class="btn btn-social-icon btn-github" target="_blank">
                                 <span class="fa fa-github"></span>
                             </a>
-                            <a class="btn btn-social-icon btn-bitbucket">
+                            <a href="https://bitbucket.org/asimsinanyuksel/bughelper/src/master/" class="btn btn-social-icon btn-bitbucket" target="_blank">
                                 <span class="fa fa-bitbucket"></span>
                             </a>
                         </div>
@@ -100,7 +146,15 @@
                                     <h4><b>Sorular</b></h4>
                                 </div>
                                 <div class="col-sm-6 text-right">
-                                    <a class="btn btn-info btn-block" href="/Sorular/SoruSor"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp; Soru Sor</a>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <a class="btn btn-info btn-block" href="/Sorular/SoruSor"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp; Soru Sor</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-primary btn-block" href="/Sorular/SoruSor"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp;Misafir Soru Sor</a>
+                                    }
+
                                 </div>
 
                             </div>
@@ -108,12 +162,12 @@
                         <div class="row">
                             <div class="panel-body">
                                 <div class="col-sm-3 text-left">
-                                    <p>@Model.Sorular.Count Soru</p>
+                                    <p>@Model.SoruSayisi Soru</p>
                                 </div>
                                 @using (Ajax.BeginForm("SorularFiltre", "Home", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "sorular" }))
                                 {
                                     <div class="col-sm-9">
-                                        <div class="btn-group btn-group-justified">
+                                        <div class="btn-group pull-right" style="float:right;">
                                             <button class="btn btn-default" type="submit" value="Yeniler" name="etiketFiltre" style="font-size:12px;width:auto;">Yeniler</button>
                                             <button class="btn btn-default" type="submit" value="Pasif" name="etiketFiltre" style="font-size:12px;width:auto;">Pasif</button>
                                             <button class="btn btn-default" type="submit" value="Beğenilenler" name="etiketFiltre" style="font-size:12px;width:auto;">Beğenilenler</button>
@@ -147,18 +201,20 @@
                                     </div>
                                     <div class="col-md-10 col-sm-9 col-xs-9 text-left" style="overflow:auto;max-height:350px;">
                                         <h4>
-                                            <a href="@Url.Action("Soru", "Sorular", new { baslik = @FriendlyURL.FriendlyURLTitle(item.SoruBaslik), SoruId = item.Id })">
+                                            <a class="third after" href="@Url.Action("Soru", "Sorular", new { baslik = @FriendlyURL.FriendlyURLTitle(item.SoruBaslik), SoruId = item.Id })">
                                                 @item.SoruBaslik
                                             </a>
                                         </h4>
-                                        <p class="text-justify">
-                                            @Html.Raw(@item.SoruIcerik)
-                                            <small class="text-muted">
-                                                <a href="@Url.Action("Soru", "Sorular", new { baslik = @FriendlyURL.FriendlyURLTitle(item.SoruBaslik), SoruId = item.Id })">
-                                                    <text>Soruya git</text>
-                                                </a>
-                                            </small>
-                                        </p>
+                                        @*
+                                            <p class="text-justify">
+                                                @Html.Raw(@item.SoruIcerik)
+                                                <small class="text-muted">
+                                                    <a href="@Url.Action("Soru", "Sorular", new { baslik = @FriendlyURL.FriendlyURLTitle(item.SoruBaslik), SoruId = item.Id })">
+                                                        <text>Soruya git</text>
+                                                    </a>
+                                                </small>
+                                            </p>
+                                        *@
                                         <h5><span class="label label-primary">@item.KodlamaDili</span></h5>
                                         <div class="pull-right">
                                             @if (!@item.SoruSahibi.Contains("Misafir"))
@@ -247,8 +303,8 @@
             Sayfa @(Model.PagedList.PageCount < Model.PagedList.PageNumber ? 0 : Model.PagedList.PageNumber)/@Model.PagedList.PageCount
             @Html.PagedListPager(Model.PagedList, page => Url.Action("Index", new { page }))
         </div>
-            
-        
+
+
     </div>
     <div class="col-lg-3">
         <div class="row">

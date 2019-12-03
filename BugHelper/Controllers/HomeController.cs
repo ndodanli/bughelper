@@ -23,11 +23,11 @@ namespace BugHelper.Controllers
             }
             model.PagedList = sc.Sorular.Where(i => i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
             model.Sorular = sc.Sorular.Where(i => i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
-            model.SoruSayisi = sc.Sorular.Count();
+            model.SoruSayisi = sc.Sorular.Where(i => i.Onay == true).Count();
             foreach (var item in model.Sorular)
             {
                 if(item.SoruSahibi == "Misafir") { continue; }
-                item.SoruSahibiPath = dc.Users.Where(i => i.UserName == item.SoruSahibi).FirstOrDefault().Path;
+                item.SoruSahibiPath = dc.Users.Where(i => i.UserName == item.SoruSahibi).FirstOrDefault()?.Path;
             }
             return View(model);
         }
@@ -120,6 +120,171 @@ namespace BugHelper.Controllers
             {
                 model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "C#" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
                 model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "C#" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+                foreach (var item in model.Sorular)
+                {
+                    if (item.SoruSahibi == "Misafir") { continue; }
+                    item.SoruSahibiPath = dc.Users.Where(i => i.UserName == item.SoruSahibi).FirstOrDefault().Path;
+                }
+                return PartialView(model);
+            }
+            else if (etiketFiltre.Equals("Python"))
+            {
+                model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "Python" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
+                model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "Python" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+                foreach (var item in model.Sorular)
+                {
+                    if (item.SoruSahibi == "Misafir") { continue; }
+                    item.SoruSahibiPath = dc.Users.Where(i => i.UserName == item.SoruSahibi).FirstOrDefault().Path;
+                }
+                return PartialView(model);
+            }
+            else if (etiketFiltre.Equals("Php"))
+            {
+                model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "Php" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
+                model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "Php" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+                foreach (var item in model.Sorular)
+                {
+                    if (item.SoruSahibi == "Misafir") { continue; }
+                    item.SoruSahibiPath = dc.Users.Where(i => i.UserName == item.SoruSahibi).FirstOrDefault().Path;
+                }
+                return PartialView(model);
+            }
+            else if (etiketFiltre.Equals("R"))
+            {
+                model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "R" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
+                model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "R" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+                foreach (var item in model.Sorular)
+                {
+                    if (item.SoruSahibi == "Misafir") { continue; }
+                    item.SoruSahibiPath = dc.Users.Where(i => i.UserName == item.SoruSahibi).FirstOrDefault().Path;
+                }
+                return PartialView(model);
+            }
+            else if (etiketFiltre.Equals("Go"))
+            {
+                model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "Go" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
+                model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "Go" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+                foreach (var item in model.Sorular)
+                {
+                    if (item.SoruSahibi == "Misafir") { continue; }
+                    item.SoruSahibiPath = dc.Users.Where(i => i.UserName == item.SoruSahibi).FirstOrDefault().Path;
+                }
+                return PartialView(model);
+            }
+            else if (etiketFiltre.Equals("Ruby"))
+            {
+                model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "Ruby" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
+                model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "Ruby" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+                foreach (var item in model.Sorular)
+                {
+                    if (item.SoruSahibi == "Misafir") { continue; }
+                    item.SoruSahibiPath = dc.Users.Where(i => i.UserName == item.SoruSahibi).FirstOrDefault().Path;
+                }
+                return PartialView(model);
+            }
+            else if (etiketFiltre.Equals("Groovy"))
+            {
+                model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "Groovy" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
+                model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "Groovy" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+                foreach (var item in model.Sorular)
+                {
+                    if (item.SoruSahibi == "Misafir") { continue; }
+                    item.SoruSahibiPath = dc.Users.Where(i => i.UserName == item.SoruSahibi).FirstOrDefault().Path;
+                }
+                return PartialView(model);
+            }
+            else if (etiketFiltre.Equals("Perl"))
+            {
+                model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "Perl" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
+                model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "Perl" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+                foreach (var item in model.Sorular)
+                {
+                    if (item.SoruSahibi == "Misafir") { continue; }
+                    item.SoruSahibiPath = dc.Users.Where(i => i.UserName == item.SoruSahibi).FirstOrDefault().Path;
+                }
+                return PartialView(model);
+            }
+            else if (etiketFiltre.Equals("Pascal"))
+            {
+                model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "Pascal" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
+                model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "Pascal" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+                foreach (var item in model.Sorular)
+                {
+                    if (item.SoruSahibi == "Misafir") { continue; }
+                    item.SoruSahibiPath = dc.Users.Where(i => i.UserName == item.SoruSahibi).FirstOrDefault().Path;
+                }
+                return PartialView(model);
+            }
+            else if (etiketFiltre.Equals("Delphi"))
+            {
+                model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "Delphi" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
+                model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "Delphi" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+                foreach (var item in model.Sorular)
+                {
+                    if (item.SoruSahibi == "Misafir") { continue; }
+                    item.SoruSahibiPath = dc.Users.Where(i => i.UserName == item.SoruSahibi).FirstOrDefault().Path;
+                }
+                return PartialView(model);
+            }
+            else if (etiketFiltre.Equals("Swift"))
+            {
+                model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "Swift" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
+                model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "Swift" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+                foreach (var item in model.Sorular)
+                {
+                    if (item.SoruSahibi == "Misafir") { continue; }
+                    item.SoruSahibiPath = dc.Users.Where(i => i.UserName == item.SoruSahibi).FirstOrDefault().Path;
+                }
+                return PartialView(model);
+            }
+            else if (etiketFiltre.Equals("Matlab"))
+            {
+                model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "Matlab" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
+                model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "Matlab" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+                foreach (var item in model.Sorular)
+                {
+                    if (item.SoruSahibi == "Misafir") { continue; }
+                    item.SoruSahibiPath = dc.Users.Where(i => i.UserName == item.SoruSahibi).FirstOrDefault().Path;
+                }
+                return PartialView(model);
+            }
+            else if (etiketFiltre.Equals("Assembly"))
+            {
+                model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "Assembly" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
+                model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "Assembly" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+                foreach (var item in model.Sorular)
+                {
+                    if (item.SoruSahibi == "Misafir") { continue; }
+                    item.SoruSahibiPath = dc.Users.Where(i => i.UserName == item.SoruSahibi).FirstOrDefault().Path;
+                }
+                return PartialView(model);
+            }
+            else if (etiketFiltre.Equals("Linux"))
+            {
+                model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "Linux" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
+                model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "Linux" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+                foreach (var item in model.Sorular)
+                {
+                    if (item.SoruSahibi == "Misafir") { continue; }
+                    item.SoruSahibiPath = dc.Users.Where(i => i.UserName == item.SoruSahibi).FirstOrDefault().Path;
+                }
+                return PartialView(model);
+            }
+            else if (etiketFiltre.Equals("Windows"))
+            {
+                model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "Windows" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
+                model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "Windows" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+                foreach (var item in model.Sorular)
+                {
+                    if (item.SoruSahibi == "Misafir") { continue; }
+                    item.SoruSahibiPath = dc.Users.Where(i => i.UserName == item.SoruSahibi).FirstOrDefault().Path;
+                }
+                return PartialView(model);
+            }
+            else if (etiketFiltre.Equals("Shell"))
+            {
+                model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "Shell" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
+                model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "Shell" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
                 foreach (var item in model.Sorular)
                 {
                     if (item.SoruSahibi == "Misafir") { continue; }
