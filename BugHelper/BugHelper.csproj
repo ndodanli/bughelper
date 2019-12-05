@@ -1040,6 +1040,7 @@
     <Content Include="Views\Sorular\HaberEkle.cshtml" />
     <Content Include="Views\Shared\Haberler.cshtml" />
     <Content Include="Views\Account\IletısımMesajlar.cshtml" />
+    <Content Include="Views\RoleAdmin\EtiketEkle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

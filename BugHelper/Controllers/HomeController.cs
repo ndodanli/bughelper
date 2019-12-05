@@ -18,12 +18,23 @@ namespace BugHelper.Controllers
         [RequireHttps]
         public ActionResult Index(int? page) //kullanıcı herhangi bir filtreleme işlemi talep etmedi ise gözükecek soruları, onaylanmış sorulardan tarihe göre azalan şekilde liste yaparak gönderiyoruz
         {
-            if (User.Identity.IsAuthenticated) { 
-            model.SoruIzleyici = dc.Users.Where(i => i.UserName == User.Identity.Name).FirstOrDefault();
+            Random rnd = new Random();
+            if (User.Identity.IsAuthenticated) {
+                model.SoruIzleyici = dc.Users.Where(i => i.UserName == User.Identity.Name).FirstOrDefault();
             }
             model.PagedList = sc.Sorular.Where(i => i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
             model.Sorular = sc.Sorular.Where(i => i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
             model.SoruSayisi = sc.Sorular.Where(i => i.Onay == true).Count();
+            model.Etiketler = sc.Sorular.Where(i => i.Onay == true).Select(a => a.KodlamaDili).Distinct().ToList();
+            string[] temp = new string[model.Etiketler.Count()];
+            string[] renkler = { "default", "primary", "secondary", "danger", "dark", "info", "success" };
+            for (int i = 0; i < model.Etiketler.Count(); i++)
+            {
+                int index = rnd.Next(renkler.Count());
+                temp[i] = renkler[index];
+            }
+            model.EtiketRenkleri = temp;
+
             foreach (var item in model.Sorular)
             {
                 if(item.SoruSahibi == "Misafir") { continue; }
@@ -72,10 +83,10 @@ namespace BugHelper.Controllers
                 }
                 return PartialView(model);
             }
-            else if (etiketFiltre.Equals("AspNet"))
+            else if (etiketFiltre.Equals("Asp.net"))
             {
-                model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "AspNet" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
-                model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "AspNet" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
+                model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "Asp.net" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
+                model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "Asp.net" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();
                 foreach (var item in model.Sorular)
                 {
                     if (item.SoruSahibi == "Misafir") { continue; }
@@ -94,7 +105,7 @@ namespace BugHelper.Controllers
                 }
                 return PartialView(model);
             }
-            else if (etiketFiltre.Equals("JavaScript"))
+            else if (etiketFiltre.Equals("Javascript"))
             {
                 model.PagedList = sc.Sorular.Where(i => i.KodlamaDili == "Javascript" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).ToPagedList(page ?? 1, 10);
                 model.Sorular = sc.Sorular.Where(i => i.KodlamaDili == "JavaScript" && i.Onay == true).OrderByDescending(i => i.SorulmaTarihi).Skip((page - 1 ?? 0) * 10).Take(10).ToList();

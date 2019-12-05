@@ -17,30 +17,7 @@ namespace BugHelper.Controllers
         [HttpGet]
         public ActionResult SoruSor()
         {
-            IEnumerable<String> diller = new List<String>
-            {
-                "C#",
-                "Java",
-                "Asp.net",
-                "C",
-                "Javascript",
-                "Html",
-                "Python",
-                "Php",
-                "R",
-                "Go",
-                "Ruby",
-                "Groovy",
-                "Perl",
-                "Pascal",
-                "Delphi",
-                "Swift",
-                "Matlab",
-                "Assembly",
-                "Linux",
-                "Windows",
-                "Shell"
-            };
+            IEnumerable<String> diller = sc.Etiketler.Select(i => i.KodlamaDili);
             ViewBag.Diller = diller;
             return View();
         }
@@ -91,7 +68,7 @@ namespace BugHelper.Controllers
         {
             int id = Convert.ToInt32(RouteData.Values["SoruId"]);
 
-            if (sc.Sorular.Where(i => i.Id == id).FirstOrDefault() == null) return View("Hata","_Layout", "<div class=\"alert alert-warning\" role=\"alert\">Soru bulunamadı</div>");
+            if (sc.Sorular.Where(i => i.Id == id).FirstOrDefault() == null) return View("Hata", "_Layout", "<div class=\"alert alert-warning\" role=\"alert\">Soru bulunamadı</div>");
             sc.Sorular.Where(i => i.Id == id).FirstOrDefault().TiklanmaSayisi++;
             sc.SaveChanges();
             SoruCevapModel model = new SoruCevapModel(); //Bu metod için kullandığımız modelimiz(Ctrl'e basılı tutaral SoruCevapModel'e tıklarsanız içeriğini görebilirsiniz)

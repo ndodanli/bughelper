@@ -18,7 +18,7 @@ namespace BugHelper.Models
         public DbSet<ArtiOyCevaplar> ArtiOyCevaplar { get; set; }
         public DbSet<EksiOy> EksiOy { get; set; }
         public DbSet<EksiOyCevaplar> EksiOyCevaplar { get; set; }
-        public DbSet<Etiket> Etiket { get; set; }
+        public DbSet<Etiket> Etiketler { get; set; }
         public DbSet<YeniHaberler> YeniHaberler { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace BugHelper.Controllers
     {
         private RoleManager<IdentityRole> roleManager;
         private UserManager<ApplicationUser> userManager;
+        private SorularContext sc = new SorularContext();
         public RoleAdminController()
         {
            roleManager=new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new IdentityDataContext())); //Rol işlemleri için kullanacağımız roleManager'imiz, genel olarak bu manager'lerin kaynağı IdentityDataContext'imiz
@@ -124,6 +125,18 @@ namespace BugHelper.Controllers
             }
 
             return View("Hata", new string[] { "aranılan rol yok." });
+        }
+        public ActionResult EtiketEkle()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult EtiketEkle(Etiket etiket)
+        {
+            sc.Etiketler.Add(etiket);
+            sc.SaveChanges();
+            ViewBag.Message = "<div class=\"alert alert-success\" role=\"alert\">Etiket başarı ile eklendi</div>";
+            return View();
         }
     }
 }

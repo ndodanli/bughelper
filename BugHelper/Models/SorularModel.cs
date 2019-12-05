@@ -3,6 +3,7 @@ using PagedList;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace BugHelper.Models
 {
@@ -13,7 +14,6 @@ namespace BugHelper.Models
             Cevaplar = new List<CevaplarModel>();
             ArtiOylar = new List<ArtiOy>();
             EksiOylar = new List<EksiOy>();
-            Etiketler = new List<Etiket>();
         }
         public int Id { get; set; }
         public string SoruIcerik { get; set; }
@@ -30,7 +30,6 @@ namespace BugHelper.Models
         public List<CevaplarModel> Cevaplar { get; set; }
         public List<ArtiOy> ArtiOylar { get; set; }
         public List<EksiOy> EksiOylar { get; set; }
-        public List<Etiket> Etiketler { get; set; }
 
         public static implicit operator SorularModel(CevaplarModel v)
         {
@@ -70,15 +69,14 @@ namespace BugHelper.Models
     public class Etiket
     {
         public int Id { get; set; }
-
-        public string Etiketler { get; set; }
-        public SorularModel Soru { get; set; }
-
+        public string KodlamaDili { get; set; }
     }
     public class SorularPaged
     {
         public List<SorularModel> Sorular { get; set; }
+        public List<String> Etiketler { get; set; }
         public ApplicationUser SoruIzleyici { get; set; }
+        public string[] EtiketRenkleri { get; set; }
         public int SoruSayisi { get; set; }
         public IPagedList PagedList { get; set; }
     }

@@ -79,28 +79,11 @@
                     <div class="panel-body">
                         <p>
                             @using (Ajax.BeginForm("SorularFiltre", "Home", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "sorular" }))
-                            {
-                                <button type="submit" class="btn btn-primary btn-xs" value="C#" name="etiketFiltre">csharp</button>
-                                <button type="submit" class="btn btn-secondary btn-xs" value="Java" name="etiketFiltre">java</button>
-                                <button type="submit" class="btn btn-success btn-xs" value="AspNet" name="etiketFiltre">aspnet</button>
-                                <button type="submit" class="btn btn-info btn-xs" value="C" name="etiketFiltre">c</button>
-                                <button type="submit" class="btn btn-danger btn-xs" value="JavaScript" name="etiketFiltre">javascript</button>
-                                <button type="submit" class="btn btn-default btn-xs" value="Html" name="etiketFiltre">html</button>
-                                <button type="submit" class="btn btn-success btn-xs" value="Python" name="etiketFiltre">python</button>
-                                <button type="submit" class="btn btn-info btn-xs" value="Php" name="etiketFiltre">php</button>
-                                <button type="submit" class="btn btn-success btn-xs" value="R" name="etiketFiltre">r</button>
-                                <button type="submit" class="btn btn-secondary btn-xs" value="Go" name="etiketFiltre">go</button>
-                                <button type="submit" class="btn btn-default btn-xs" value="Ruby" name="etiketFiltre">ruby</button>
-                                <button type="submit" class="btn btn-primary btn-xs" value="Groovy" name="etiketFiltre">groovy</button>
-                                <button type="submit" class="btn btn-secondary btn-xs" value="Perl" name="etiketFiltre">perl</button>
-                                <button type="submit" class="btn btn-danger btn-xs" value="Pascal" name="etiketFiltre">pascal</button>
-                                <button type="submit" class="btn btn-info btn-xs" value="Delphi" name="etiketFiltre">delphi</button>
-                                <button type="submit" class="btn btn-danger btn-xs" value="Swift" name="etiketFiltre">swift</button>
-                                <button type="submit" class="btn btn-info btn-xs" value="Matlab" name="etiketFiltre">matlab</button>
-                                <button type="submit" class="btn btn-primary btn-xs" value="Assembly" name="etiketFiltre">assembly</button>
-                                <button type="submit" class="btn btn-danger btn-xs" value="Linux" name="etiketFiltre">linux</button>
-                                <button type="submit" class="btn btn-default btn-xs" value="Windows" name="etiketFiltre">windows</button>
-                                <button type="submit" class="btn btn-success btn-xs" value="Shell" name="etiketFiltre">shell</button>
+                                        {
+                                            for(int i = 0; i<Model.Etiketler.Count();i++)
+                                            {
+                            <button type="submit" class="btn btn-@Model.EtiketRenkleri[i] btn-xs" value="@Model.Etiketler[i]" name="etiketFiltre">@Model.Etiketler[i].ToLower()</button>
+                                }
                             }
                         </p>
                     </div>
