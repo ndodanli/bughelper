@@ -395,6 +395,10 @@
     <Compile Include="Migrations\201911301658573_Ad1.Designer.cs">
       <DependentUpon>201911301658573_Ad1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912071419561_Ad2.cs" />
+    <Compile Include="Migrations\201912071419561_Ad2.Designer.cs">
+      <DependentUpon>201912071419561_Ad2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ArtiOys.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
@@ -446,6 +450,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SoruModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UlkelerModel.cs" />
     <Compile Include="Models\UserDiagram.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1041,6 +1046,7 @@
     <Content Include="Views\Shared\Haberler.cshtml" />
     <Content Include="Views\Account\IletısımMesajlar.cshtml" />
     <Content Include="Views\RoleAdmin\EtiketEkle.cshtml" />
+    <Content Include="Views\RoleAdmin\UlkeEkle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1067,6 +1073,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911301658573_Ad1.resx">
       <DependentUpon>201911301658573_Ad1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912071419561_Ad2.resx">
+      <DependentUpon>201912071419561_Ad2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

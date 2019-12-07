@@ -2000,7 +2000,7 @@ D:\recovery\Yeni klasör\BugHelper\obj\Debug\BugHelper.csprojAssemblyReference.c
 D:\recovery\Yeni klasör\BugHelper\obj\Debug\BugHelper.Migrations.Ad.resources
 D:\recovery\Yeni klasör\BugHelper\obj\Debug\BugHelper.Migrations.Ad1.resources
 D:\recovery\Yeni klasör\BugHelper\obj\Debug\BugHelper.csproj.GenerateResource.cache
-D:\recovery\Yeni klasör\BugHelper\obj\Debug\BugHelper.csproj.CoreCompileInputs.cache
 D:\recovery\Yeni klasör\BugHelper\obj\Debug\BugHelper.csproj.CopyComplete
 D:\recovery\Yeni klasör\BugHelper\obj\Debug\BugHelper.dll
 D:\recovery\Yeni klasör\BugHelper\obj\Debug\BugHelper.pdb
+D:\recovery\Yeni klasör\BugHelper\obj\Debug\BugHelper.Migrations.Ad2.resources

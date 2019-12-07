@@ -22,6 +22,7 @@ namespace BugHelper.Identity
         public DbSet<TakipEttikleriModel> TakipEttikleri { get; set; }
         public DbSet<FavoriSorularModel> FavoriSorular { get; set; }
         public DbSet<IletisimModel> Iletisim { get; set; }
+        public DbSet<UlkelerModel> Ulkeler { get; set; }
 
     }
 }

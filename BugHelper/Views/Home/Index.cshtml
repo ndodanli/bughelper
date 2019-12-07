@@ -79,10 +79,10 @@
                     <div class="panel-body">
                         <p>
                             @using (Ajax.BeginForm("SorularFiltre", "Home", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "sorular" }))
-                                        {
-                                            for(int i = 0; i<Model.Etiketler.Count();i++)
-                                            {
-                            <button type="submit" class="btn btn-@Model.EtiketRenkleri[i] btn-xs" value="@Model.Etiketler[i]" name="etiketFiltre">@Model.Etiketler[i].ToLower()</button>
+                            {
+                                for (int i = 0; i < Model.Etiketler.Count(); i++)
+                                {
+                            <button type="submit" class="btn btn-@Model.EtiketRenkleri[i] btn-xs" value="@Model.Etiketler[i].Etiket" name="etiketFiltre"><span class="badge">@Model.Etiketler[i].SoruSayisi</span> @Model.Etiketler[i].Etiket.ToLower()</button>
                                 }
                             }
                         </p>

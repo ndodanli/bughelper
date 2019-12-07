@@ -739,7 +739,7 @@ D:\recovery\Yeni klasör\BugHelper\obj\Release\BugHelper.csprojAssemblyReference
 D:\recovery\Yeni klasör\BugHelper\obj\Release\BugHelper.Migrations.Ad.resources
 D:\recovery\Yeni klasör\BugHelper\obj\Release\BugHelper.Migrations.Ad1.resources
 D:\recovery\Yeni klasör\BugHelper\obj\Release\BugHelper.csproj.GenerateResource.cache
-D:\recovery\Yeni klasör\BugHelper\obj\Release\BugHelper.csproj.CoreCompileInputs.cache
 D:\recovery\Yeni klasör\BugHelper\obj\Release\BugHelper.csproj.CopyComplete
 D:\recovery\Yeni klasör\BugHelper\obj\Release\BugHelper.dll
 D:\recovery\Yeni klasör\BugHelper\obj\Release\BugHelper.pdb
+D:\recovery\Yeni klasör\BugHelper\obj\Release\BugHelper.Migrations.Ad2.resources

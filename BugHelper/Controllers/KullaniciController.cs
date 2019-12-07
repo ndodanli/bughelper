@@ -96,14 +96,7 @@ namespace BugHelper.Controllers
             profil.Twitter = user.Twitter;
             profil.GitHub = user.GitHub;
             profil.BitBucket = user.BitBucket;
-            IEnumerable<String> ulkeler = new List<String>
-            {
-                "Türkiye", "Almanya", "Avusturya", "Amerika","İngiltere",
-                "Macaristan", "Yunanistan", "Rusya", "Suriye", "İran", "Irak",
-                "Şili", "Brezilya", "Japonya", "Portekiz", "İspanya",
-                "Makedonya", "Ukrayna", "İsviçre", "İngiltere", "ABD",
-
-            };
+            IEnumerable<String> ulkeler = dc.Ulkeler.Select(i => i.Ulkeler).ToList();
             ViewBag.Ulkeler = ulkeler;
             return View(profil);
         }
