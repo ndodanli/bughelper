@@ -273,7 +273,6 @@ namespace BugHelper.Controllers
         {
             sc.ArtiOy.RemoveRange(sc.ArtiOy.Where(i => i.Soru.Id == soru.Id));
             sc.EksiOy.RemoveRange(sc.EksiOy.Where(i => i.Soru.Id == soru.Id));
-            var b = sc.Cevaplar.Where(i => i.Soru.Id == soru.Id).SelectMany(a => a.ArtiOyCevaplar);
             sc.ArtiOyCevaplar.RemoveRange(sc.Cevaplar.Where(i => i.Soru.Id == soru.Id).SelectMany(a => a.ArtiOyCevaplar));
             sc.EksiOyCevaplar.RemoveRange(sc.Cevaplar.Where(i => i.Soru.Id == soru.Id).SelectMany(a => a.EksiOyCevaplar));
             sc.Cevaplar.RemoveRange(sc.Cevaplar.Where(i => i.Soru.Id == soru.Id));

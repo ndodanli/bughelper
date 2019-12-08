@@ -2004,3 +2004,9 @@ D:\recovery\Yeni klasör\BugHelper\obj\Debug\BugHelper.csproj.CopyComplete
 D:\recovery\Yeni klasör\BugHelper\obj\Debug\BugHelper.dll
 D:\recovery\Yeni klasör\BugHelper\obj\Debug\BugHelper.pdb
 D:\recovery\Yeni klasör\BugHelper\obj\Debug\BugHelper.Migrations.Ad2.resources
+D:\recovery\Yeni klasör\BugHelper\bin\System.Net.Http.Formatting.dll
+D:\recovery\Yeni klasör\BugHelper\bin\System.Web.Http.dll
+D:\recovery\Yeni klasör\BugHelper\bin\System.Web.Http.WebHost.dll
+D:\recovery\Yeni klasör\BugHelper\bin\System.Net.Http.Formatting.xml
+D:\recovery\Yeni klasör\BugHelper\bin\System.Web.Http.xml
+D:\recovery\Yeni klasör\BugHelper\bin\System.Web.Http.WebHost.xml
