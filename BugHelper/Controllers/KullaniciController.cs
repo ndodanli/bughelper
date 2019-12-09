@@ -6,9 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 
 namespace BugHelper.Controllers
 {
@@ -25,6 +23,7 @@ namespace BugHelper.Controllers
         public KullaniciController()
         {
             userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new IdentityDataContext()));
+            userManager.PasswordValidator = new CustomPasswordValidator();
         }
         [Route("kullanici/{kullaniciAdi}/favoriler")]//Route, bu metod çalıştığında metodu çağıran görevin gönderdiği url değerlerini alır({} içindeki kısım, metodu çağıran görevden gelir, diğer kısımlar sabittir(bkz. ~/Views/Sorular/Soru.cshtml satır 75))
         public ActionResult FavoriSorular()
@@ -152,10 +151,12 @@ namespace BugHelper.Controllers
                 {
                     foreach (var errors in result.Errors)
                     {
-                        ModelState.AddModelError("", errors);
+                        ModelState.AddModelError("", "Parola yanlış");
                     }
                 }
             }
+            ViewBag.HataMessage1 = "<div class=\"alert alert-danger\" role=\"alert\" style=\"overflow: hidden\">";
+            ViewBag.HataMessage2 = "</div>";
             return View("ParolaDegistir");
         }
         [HttpPost]
@@ -230,13 +231,17 @@ namespace BugHelper.Controllers
             {
 
                 var desteklenenTip = new[] { "jpg", "jpeg", "png" };
+                if (file != null) {
+                    ViewBag.Message = "<div class=\"alert alert-warning\" role=\"alert\">Herhangi bir dosya seçmediniz.</div>";
+                    return View(file);
+                }
                 var fileExt = System.IO.Path.GetExtension(file.FotoFile.FileName).Substring(1);
                 if (!desteklenenTip.Contains(fileExt))
                 {
                     ViewBag.Message = "<div class=\"alert alert-warning\" role=\"alert\">Geçersiz dosya formatı. Yükleyeceğiniz fotoğraf jpg veya png olmalıdır.</div>";
                     return View();
                 }
-                else if (file.FotoFile.ContentLength > (DosyaBoyutu * 1024))
+                else if (file == null || file.FotoFile.ContentLength > (DosyaBoyutu * 1024))
                 {
                     mesaj = "Dosya boyutu en fazla " + DosyaBoyutu + "KB olmalıdır!";
                     ViewBag.Message = "<div class=\"alert alert-warning\" role=\"alert\">" + mesaj + "</div>";

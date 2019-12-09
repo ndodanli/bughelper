@@ -1676,7 +1676,6 @@ C:\Users\dream\Documents\GitHub\bughelper\BugHelper\BugHelper\obj\Debug\BugHelpe
 C:\Users\dream\Documents\GitHub\bughelper\BugHelper\BugHelper\obj\Debug\BugHelper.Migrations.Ad.resources
 C:\Users\dream\Documents\GitHub\bughelper\BugHelper\BugHelper\obj\Debug\BugHelper.Migrations.Ad1.resources
 C:\Users\dream\Documents\GitHub\bughelper\BugHelper\BugHelper\obj\Debug\BugHelper.csproj.GenerateResource.cache
-C:\Users\dream\Documents\GitHub\bughelper\BugHelper\BugHelper\obj\Debug\BugHelper.csproj.CoreCompileInputs.cache
 C:\Users\dream\Documents\GitHub\bughelper\BugHelper\BugHelper\obj\Debug\BugHelper.csproj.CopyComplete
 C:\Users\dream\Documents\GitHub\bughelper\BugHelper\BugHelper\obj\Debug\BugHelper.dll
 C:\Users\dream\Documents\GitHub\bughelper\BugHelper\BugHelper\obj\Debug\BugHelper.pdb
@@ -2010,3 +2009,10 @@ D:\recovery\Yeni klasör\BugHelper\bin\System.Web.Http.WebHost.dll
 D:\recovery\Yeni klasör\BugHelper\bin\System.Net.Http.Formatting.xml
 D:\recovery\Yeni klasör\BugHelper\bin\System.Web.Http.xml
 D:\recovery\Yeni klasör\BugHelper\bin\System.Web.Http.WebHost.xml
+C:\Users\dream\Documents\GitHub\bughelper\bughelper\BugHelper\bin\System.Net.Http.Formatting.dll
+C:\Users\dream\Documents\GitHub\bughelper\bughelper\BugHelper\bin\System.Web.Http.dll
+C:\Users\dream\Documents\GitHub\bughelper\bughelper\BugHelper\bin\System.Web.Http.WebHost.dll
+C:\Users\dream\Documents\GitHub\bughelper\bughelper\BugHelper\bin\System.Net.Http.Formatting.xml
+C:\Users\dream\Documents\GitHub\bughelper\bughelper\BugHelper\bin\System.Web.Http.xml
+C:\Users\dream\Documents\GitHub\bughelper\bughelper\BugHelper\bin\System.Web.Http.WebHost.xml
+C:\Users\dream\Documents\GitHub\bughelper\bughelper\BugHelper\obj\Debug\BugHelper.Migrations.Ad2.resources

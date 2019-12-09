@@ -19,6 +19,13 @@ namespace BugHelper.Identity
                 result = new IdentityResult(errors);
 
             }
+            if (!password.Any(char.IsUpper) ||
+            !password.Any(char.IsLower) ||
+            !password.Any(char.IsDigit)) { 
+                var errors = result.Errors.ToList();
+                errors.Add("Parola en az bir büyük, bir küçük harf ve en az 1 sayı içermelidir");
+                result = new IdentityResult(errors);
+            }
             return result;
         }
     }

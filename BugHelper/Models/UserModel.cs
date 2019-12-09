@@ -24,7 +24,8 @@ namespace BugHelper.Models
         public String UserName { get; set; }
         [Required]
         public String Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Parola alanı boş bırakılamaz")]
+        [StringLength(18, ErrorMessage = "Parola en az 2, en fazla 18 karakter uzunluğunda olmalıdır", MinimumLength = 8)]
         public String Password { get; set; }
 
         [NotMapped]

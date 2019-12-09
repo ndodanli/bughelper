@@ -415,7 +415,6 @@ C:\Users\dream\Documents\GitHub\bughelper\BugHelper\BugHelper\obj\Release\BugHel
 C:\Users\dream\Documents\GitHub\bughelper\BugHelper\BugHelper\obj\Release\BugHelper.Migrations.Ad.resources
 C:\Users\dream\Documents\GitHub\bughelper\BugHelper\BugHelper\obj\Release\BugHelper.Migrations.Ad1.resources
 C:\Users\dream\Documents\GitHub\bughelper\BugHelper\BugHelper\obj\Release\BugHelper.csproj.GenerateResource.cache
-C:\Users\dream\Documents\GitHub\bughelper\BugHelper\BugHelper\obj\Release\BugHelper.csproj.CoreCompileInputs.cache
 C:\Users\dream\Documents\GitHub\bughelper\BugHelper\BugHelper\obj\Release\BugHelper.csproj.CopyComplete
 C:\Users\dream\Documents\GitHub\bughelper\BugHelper\BugHelper\obj\Release\BugHelper.dll
 C:\Users\dream\Documents\GitHub\bughelper\BugHelper\BugHelper\obj\Release\BugHelper.pdb
@@ -743,3 +742,10 @@ D:\recovery\Yeni klasör\BugHelper\obj\Release\BugHelper.csproj.CopyComplete
 D:\recovery\Yeni klasör\BugHelper\obj\Release\BugHelper.dll
 D:\recovery\Yeni klasör\BugHelper\obj\Release\BugHelper.pdb
 D:\recovery\Yeni klasör\BugHelper\obj\Release\BugHelper.Migrations.Ad2.resources
+C:\Users\dream\Documents\GitHub\bughelper\bughelper\BugHelper\bin\System.Net.Http.Formatting.dll
+C:\Users\dream\Documents\GitHub\bughelper\bughelper\BugHelper\bin\System.Web.Http.dll
+C:\Users\dream\Documents\GitHub\bughelper\bughelper\BugHelper\bin\System.Web.Http.WebHost.dll
+C:\Users\dream\Documents\GitHub\bughelper\bughelper\BugHelper\bin\System.Net.Http.Formatting.xml
+C:\Users\dream\Documents\GitHub\bughelper\bughelper\BugHelper\bin\System.Web.Http.xml
+C:\Users\dream\Documents\GitHub\bughelper\bughelper\BugHelper\bin\System.Web.Http.WebHost.xml
+C:\Users\dream\Documents\GitHub\bughelper\bughelper\BugHelper\obj\Release\BugHelper.Migrations.Ad2.resources

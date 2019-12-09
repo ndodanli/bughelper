@@ -1,20 +1,15 @@
 ﻿using BugHelper.Identity;
 using BugHelper.Models;
-using DotNetOpenAuth.FacebookOAuth2;
 using DotNetOpenAuth.GoogleOAuth2;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Membership.OpenAuth;
-using Microsoft.Owin.Security;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
-using System;
-using Microsoft.AspNetCore.Identity;
 
 namespace BugHelper.Controllers
 {
@@ -31,15 +26,9 @@ namespace BugHelper.Controllers
         public const string psswrd = "AK5GrCpQxo7fbcn9N9saW6FrveU1xh65yzHcxxiooCIGQJsWrvH+YHnrbvjrLUr53Q==";
         public AccountController()
         {
+
             userManager = new Microsoft.AspNet.Identity.UserManager<ApplicationUser>(new UserStore<ApplicationUser>(dc)); // IdentityUser(SQL Serverimiz üzerinde çalışan sınıfımız)'dan türettiğimiz ApplicationUser sınıfımızın nesnelerinini taşıyan bir UserManager objesi ürettik(özet olarak bu obje, IdentityDataContext(Identity veri tabanımızın oluşumu) sınıfından bilgileri taşıyabiliyor)
-            userManager.PasswordValidator = new CustomPasswordValidator() // UserManager referansını kullanarak Identity yapısının default olarak tanımladığı parola doğrulayıcı sınıfını kullanmamak için custom bir PasswordValidator nesnesi oluşturup bunu kullanıyoruz)
-            {//custom PasswordValidator'ımızın özelliklerini tanımlıyoruz
-                RequireDigit = true, //içerisinde sayı olacak              Ctrl'e basılı tutarak  CustomPasswordValidator'a tıklarsanız custom olarak yazdığım parola doğrulama metodunu görebilirsiniz
-                RequiredLength = 8, //en az 8 karakter olmalı
-                RequireLowercase = true, //küçük harf olmalı
-                RequireUppercase = true, //büyük harf olmalı
-                RequireNonLetterOrDigit = true, //özel karakter ve rakam olmalı
-            };
+            userManager.PasswordValidator = new CustomPasswordValidator(); // UserManager referansını kullanarak Identity yapısının default olarak tanımladığı parola doğrulayıcı sınıfını kullanmamak için custom bir PasswordValidator nesnesi oluşturup bunu kullanıyoruz)
             userManager.UserValidator = new Microsoft.AspNet.Identity.UserValidator<ApplicationUser>(userManager)
             {
                 RequireUniqueEmail = true, //aynı e-mailden 1 tane olabilir
@@ -202,6 +191,9 @@ namespace BugHelper.Controllers
                     }
                 }
             }
+            ViewBag.HataMessage1 = "<div class=\"alert alert-danger\" role=\"alert\" style=\"overflow: hidden\">";
+            ViewBag.HataMessage2 = "</div>";
+
             return View();
         }
         [HttpGet]
@@ -243,8 +235,6 @@ namespace BugHelper.Controllers
                 {
                     case SignInStatus.Success:
                         return Redirect(string.IsNullOrEmpty(returnUrl) ? "/" : returnUrl);
-                    case SignInStatus.LockedOut:
-                        return View("Hata", "_Layout", "<div class=\"alert alert-warning\" role=\"alert\">Fazla hatalı giriş yaptığınız için hesabınız <b>5<b> dakika kilitlendi</div>");
                     case SignInStatus.RequiresVerification:
                         return RedirectToAction("VerifyCode", new { ReturnUrl = returnUrl });
                     case SignInStatus.Failure:
@@ -563,6 +553,8 @@ namespace BugHelper.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.HataMessage1 = "<div class=\"alert alert-danger\" role=\"alert\" style=\"overflow: hidden\">";
+                ViewBag.HataMessage2 = "</div>";
                 return View(model);
             }
             var user = await UserManager.FindByEmailAsync(model.Email);
