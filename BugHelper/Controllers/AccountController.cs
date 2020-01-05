@@ -79,10 +79,17 @@ namespace BugHelper.Controllers
 
             if (dc.Users.Any(i => i.Email == Email))
             {
-                LoginModel model = new LoginModel();
-                model.UserName = dc.Users.Where(i => i.Email == Email).FirstOrDefault().UserName;
-                model.Password = psswrd;
-                return Login(model, "/Home/Index");
+                if (UserManager.CheckPassword(UserManager.FindByEmail(Email), "AK5GrCpQxo7fbcn9N9saW6FrveU1xh65yzHcxxiooCIGQJsWrvH+YHnrbvjrLUr53Q==") && UserManager.FindByEmail(Email).ExternalLoginType.Equals("google"))
+                {
+                    LoginModel model = new LoginModel();
+                    model.UserName = dc.Users.Where(i => i.Email == Email).FirstOrDefault().UserName;
+                    model.Password = psswrd;
+                    return Login(model, "/Home/Index");
+                }
+                else
+                {
+                    return View("Hata", "_Layout", "<div class=\"alert alert-warning\" role=\"alert\">Bu e-posta ile zaten kayıt olunmuş</div>");
+                }
             }
             else
             {
@@ -106,10 +113,17 @@ namespace BugHelper.Controllers
             string Soyad = authResult.ExtraData["name"].Substring(authResult.ExtraData["name"].LastIndexOf(" ") + 1);
             if (dc.Users.Any(i => i.Email == Email))
             {
-                LoginModel model = new LoginModel();
-                model.UserName = dc.Users.Where(i => i.Email == Email).FirstOrDefault().UserName;
-                model.Password = psswrd;
-                return Login(model, "/Home/Index");
+                if (UserManager.CheckPassword(UserManager.FindByEmail(Email), "AK5GrCpQxo7fbcn9N9saW6FrveU1xh65yzHcxxiooCIGQJsWrvH+YHnrbvjrLUr53Q==") && UserManager.FindByEmail(Email).ExternalLoginType.Equals("facebook"))
+                {
+                    LoginModel model = new LoginModel();
+                    model.UserName = dc.Users.Where(i => i.Email == Email).FirstOrDefault().UserName;
+                    model.Password = psswrd;
+                    return Login(model, "/Home/Index");
+                }
+                else
+                {
+                    return View("Hata", "_Layout", "<div class=\"alert alert-warning\" role=\"alert\">Bu e-posta ile zaten kayıt olunmuş. Farklı Facebook hesabı deneyiniz.</div>");
+                }
             }
             else
             {
@@ -202,7 +216,7 @@ namespace BugHelper.Controllers
         {
             if (HttpContext.User.Identity.IsAuthenticated) //kullanıcı girdiği sayfada gerekli role(yetki) sahip değilse
             {
-                return View("Hata", new string[] { "Erişim hakkınız yok" });
+                return View("Hata", "_Layout", "Erişim hakkınız yok");
             }
 
             ViewBag.returnUrl = returnUrl ?? "";
@@ -496,10 +510,6 @@ namespace BugHelper.Controllers
                 }
             }
             return View();
-        }
-        private ApplicationUser Kontrol(ApplicationUser identity)
-        {
-            return identity;
         }
         public ActionResult Logout()
         {

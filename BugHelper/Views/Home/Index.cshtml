@@ -205,11 +205,11 @@
                                                 <a href="@Url.Action("ProfilGoruntule", "Kullanici", new { takmaAd = @FriendlyURL.FriendlyURLTitle(item.SoruSahibi), KullaniciAdi = item.SoruSahibi })" class="pull-right">
                                                     @if (item.SoruSahibiPath == null)
                                                     {
-                                                        <img src="https://www.w3schools.com/bootstrap/img_avatar3.png" class="img-circle" height="48" width="48">
+                                                        <img src="https://www.w3schools.com/bootstrap/img_avatar3.png" class="img-circle" height="65" width="65">
                                                     }
                                                     else
                                                     {
-                                                        <img src="@item.SoruSahibiPath.Substring(20)" class="img-circle" height="48" width="48">
+                                                        <img src="@item.SoruSahibiPath.Substring(20)" class="img-circle" height="65" width="65">
                                                     }
                                                     <small class="text-muted">
                                                         @item.SoruSahibi
@@ -254,28 +254,12 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <span class="warning pull-right alert alert-danger" style="color:red;padding-top:1px;padding-bottom:1px;">Onaylanmadı</span>
-                                        @if (!@item.SoruSahibi.Contains("Misafir"))
-                                        {
                                             <a href="@Url.Action("ProfilGoruntule", "Kullanici", new { takmaAd = @FriendlyURL.FriendlyURLTitle(item.SoruSahibi), KullaniciAdi = item.SoruSahibi })" class="pull-right">
-                                                @if (item.SoruSahibiPath == null)
-                                                {
-                                                    <img src="https://www.w3schools.com/bootstrap/img_avatar3.png" class="img-circle" height="48" width="48">
-                                                }
-                                                else
-                                                {
-                                                    <img src="@item.SoruSahibiPath.Substring(20)" class="img-circle" height="48" width="48">
-                                                }
+                                                    <img src="https://www.w3schools.com/bootstrap/img_avatar3.png" class="img-circle" height="65" width="65">
                                                 <small class="text-muted">
-                                                    @item.SoruSahibi
+                                                    Misafir
                                                 </small>
                                             </a>
-                                        }
-                                        else
-                                        {
-                                            <small class="text-muted">
-                                                @item.SoruSahibi
-                                            </small>
-                                        }
                                     </div>
                                 </div>
                             </div>

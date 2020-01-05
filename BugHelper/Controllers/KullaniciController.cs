@@ -206,13 +206,6 @@ namespace BugHelper.Controllers
                 return PartialView(scm);
             }
         }
-        [HttpPost]
-        public ActionResult FavoridenCikar(int soruId)
-        {
-            dc.FavoriSorular.Remove(dc.FavoriSorular.Where(i => i.ApplicationUser.UserName == User.Identity.Name && i.FavoriSorular == soruId).FirstOrDefault());
-            dc.SaveChanges();
-            return PartialView("_Mesaj");
-        }
         [Route("{kullaniciAdi}/profil/fotoguncelle")]
         public ActionResult FotoGuncelle()
         {
@@ -229,17 +222,23 @@ namespace BugHelper.Controllers
             decimal DosyaBoyutu = 500;
             try
             {
-
+                FotoModel fm = new FotoModel();
                 var desteklenenTip = new[] { "jpg", "jpeg", "png" };
-                if (file != null) {
+                if (file.FotoFile == null) {
                     ViewBag.Message = "<div class=\"alert alert-warning\" role=\"alert\">Herhangi bir dosya seçmediniz.</div>";
-                    return View(file);
+                    return View();
                 }
                 var fileExt = System.IO.Path.GetExtension(file.FotoFile.FileName).Substring(1);
                 if (!desteklenenTip.Contains(fileExt))
                 {
+
+                    var user = dc.Users.Where(i => i.UserName == User.Identity.Name).FirstOrDefault();
+                    if (dc.Users.Where(i => i.UserName == User.Identity.Name).FirstOrDefault().Path != null)
+                    {
+                        fm.Path = dc.Users.Where(i => i.UserName == User.Identity.Name).FirstOrDefault().Path;
+                    }
                     ViewBag.Message = "<div class=\"alert alert-warning\" role=\"alert\">Geçersiz dosya formatı. Yükleyeceğiniz fotoğraf jpg veya png olmalıdır.</div>";
-                    return View();
+                    return View(fm);
                 }
                 else if (file == null || file.FotoFile.ContentLength > (DosyaBoyutu * 1024))
                 {
@@ -250,7 +249,6 @@ namespace BugHelper.Controllers
                 }
                 else
                 {
-                    FotoModel fm = new FotoModel();
                     string key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
                     char[] stringChars = new char[7];
                     var _FileName = Path.GetFileName(file.FotoFile.FileName);

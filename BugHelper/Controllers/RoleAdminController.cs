@@ -69,7 +69,7 @@ namespace BugHelper.Controllers
             }
             else
             {
-                return View("Hata", new string[] { "Rol Bulunamadı" });
+                return View("Hata","_Layout", "Rol Bulunamadı" );
             }
         }
 
@@ -124,7 +124,7 @@ namespace BugHelper.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View("Hata", new string[] { "aranılan rol yok." });
+            return View("Hata", "_Layout","aranılan rol yok." );
         }
         public ActionResult EtiketEkle()
         {

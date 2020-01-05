@@ -244,14 +244,7 @@ namespace BugHelper.Controllers
         public ActionResult SoruDuzenle(int soruId)
         {
             SorularModel soru = sc.Sorular.Where(i => i.Id == soruId).FirstOrDefault();
-            IEnumerable<String> diller = new List<String>
-            {
-                "C#",
-                "Java",
-                "Asp.net",
-                "Javascript",
-                "Html"
-            };
+            IEnumerable<String> diller = sc.Etiketler.Select(i => i.KodlamaDili);
             ViewBag.Diller = diller;
             return View(soru);
         }
